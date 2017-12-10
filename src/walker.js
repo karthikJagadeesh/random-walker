@@ -18,26 +18,16 @@ class Walker {
     const p = this._p;
 
     const choice = Math.floor(p.random(10));
-    switch (choice) {
-      case 0:
-      case 1:
-      case 2:
-      case 3:
-        this.y = this.y + 1;
-        break;
-      case 4:
-      case 5:
-        this.x = this.x - 2;
-        break;
-      case 6:
-      case 7:
-        this.x = this.x + 2;
-        break;
-      case 8:
-      case 9:
-        this.y = this.y - 2;
-        break;
+    if (choice <= 3) {
+      this.y = this.y + 1;
+    } else if (choice <= 5) {
+      this.x = this.x - 2;
+    } else if (choice <= 7) {
+      this.x = this.x + 2;
+    } else {
+      this.y = this.y - 2;
     }
+
     this.x = p.constrain(this.x, 0, p.width);
     this.y = p.constrain(this.y, 0, p.height);
   }
