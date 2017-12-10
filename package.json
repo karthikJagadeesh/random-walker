@@ -1,0 +1,23 @@
+{
+  "name": "random-walker",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/karthikJagadeesh/random-walker.git",
+  "author": "Karthik Jagadeesha <kartu8@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "p5": "^0.5.16"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --inline --hot",
+    "build": "webpack -p"
+  }
+}
