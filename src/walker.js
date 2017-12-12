@@ -5,6 +5,7 @@ class Walker {
     this.positionY = this._p.height / 2;
     this.color = color;
     this.size = size;
+    this._offset = 0;
   }
 
   show() {
@@ -16,15 +17,16 @@ class Walker {
 
   move() {
     const p = this._p;
-    const deviation = p.randomGaussian(0, 5);
+
+    const deviation = p.map(p.noise(this._offset), 0, 1, 0, 4);
     const choice = Math.floor(p.random(10));
 
-    if (choice <= 3) {
-      this.positionY = this.positionY + deviation;
+    if (choice <= 2.5) {
+      this.positionX = this.positionX + deviation;
     } else if (choice <= 5) {
       this.positionX = this.positionX - deviation;
-    } else if (choice <= 7) {
-      this.positionX = this.positionX + deviation;
+    } else if (choice <= 7.5) {
+      this.positionY = this.positionY + deviation;
     } else {
       this.positionY = this.positionY - deviation;
     }
@@ -34,6 +36,7 @@ class Walker {
     const screenHeightEnd = p.height;
     this.positionX = p.constrain(this.positionX, screenStart, screenWidthEnd);
     this.positionY = p.constrain(this.positionY, screenStart, screenHeightEnd);
+    this._offset += 0.003;
   }
 }
 

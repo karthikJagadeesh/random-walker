@@ -15,11 +15,9 @@ const app = p => {
     const walkerSize = 2;
     const redWalkerColor = [191, 53, 47]; // 🔴
     redWalker = new Walker(p, redWalkerColor, walkerSize);
-    redWalker.show();
 
     const blueWalkerColor = [27, 72, 105]; // 🔵
     blueWalker = new Walker(p, blueWalkerColor, walkerSize);
-    blueWalker.show();
   };
 
   p.draw = _ => {
