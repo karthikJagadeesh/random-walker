@@ -16,9 +16,6 @@ class Walker {
 
   move() {
     const p = this._p;
-    const screenStart = 0;
-    const screenWidthEnd = p.width;
-    const screenHeightEnd = p.height;
     const deviation = p.randomGaussian(0, 5);
     const choice = Math.floor(p.random(10));
 
@@ -32,6 +29,9 @@ class Walker {
       this.positionY = this.positionY - deviation;
     }
 
+    const screenStart = 0;
+    const screenWidthEnd = p.width;
+    const screenHeightEnd = p.height;
     this.positionX = p.constrain(this.positionX, screenStart, screenWidthEnd);
     this.positionY = p.constrain(this.positionY, screenStart, screenHeightEnd);
   }

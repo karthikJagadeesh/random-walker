@@ -3,33 +3,35 @@ import p5 from "p5"; // 🎨
 import { Walker } from "./walker"; // 🚶
 
 const app = p => {
-  let walker1 = null;
-  let walker2 = null;
+  let [redWalker, blueWalker] = [null];
   let screenCenter = 0;
 
   p.setup = _ => {
-    const redWalker = [191, 53, 47]; // 🔴
-    const blueWalker = [27, 72, 105]; // 🔵
-    const whiteColor = 255; // ⚪️
-    const walkerSize = 2;
-
     p.createCanvas(p.windowWidth, p.windowHeight);
+    const whiteColor = 255; // ⚪️
     p.background(whiteColor);
     screenCenter = p.width / 2;
-    walker1 = new Walker(p, redWalker, walkerSize);
-    walker2 = new Walker(p, blueWalker, walkerSize);
-    walker1.show();
-    walker2.show();
+
+    const walkerSize = 2;
+    const redWalkerColor = [191, 53, 47]; // 🔴
+    redWalker = new Walker(p, redWalkerColor, walkerSize);
+    redWalker.show();
+
+    const blueWalkerColor = [27, 72, 105]; // 🔵
+    blueWalker = new Walker(p, blueWalkerColor, walkerSize);
+    blueWalker.show();
   };
 
   p.draw = _ => {
-    walker1.move();
-    let offSetValue = screenCenter - walker1.positionX;
+    redWalker.move();
+
+    let offSetValue = screenCenter - redWalker.positionX;
     let mirrorValue = screenCenter + offSetValue;
-    walker2.positionX = mirrorValue;
-    walker2.positionY = walker1.positionY;
-    walker1.show();
-    walker2.show();
+    blueWalker.positionX = mirrorValue;
+    blueWalker.positionY = redWalker.positionY;
+
+    redWalker.show();
+    blueWalker.show();
   };
 
   p.windowResized = _ => {
