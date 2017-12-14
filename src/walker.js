@@ -20,6 +20,7 @@ class Walker {
     p.noStroke();
     p.fill(this.color);
     p.ellipse(this.position.x, this.position.y, this.size);
+    return this;
   }
 
   move() {
@@ -44,6 +45,7 @@ class Walker {
     this.positionX = p.constrain(this.position.x, screenStart, screenWidthEnd);
     this.positionY = p.constrain(this.position.y, screenStart, screenHeightEnd);
     this._offset += 0.003;
+    return this;
   }
 }
 
