@@ -39,6 +39,13 @@ class Walker {
       this.position.y = this.position.y - deviation;
     }
 
+    this._offset += 0.003;
+    return this;
+  }
+
+  constrain() {
+    const p = this._p;
+
     const screenStart = 0;
     const screenWidthEnd = p.width;
     const screenHeightEnd = p.height;

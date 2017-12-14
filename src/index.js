@@ -21,7 +21,7 @@ const app = p => {
   };
 
   p.draw = _ => {
-    redWalker.move();
+    redWalker.move().constrain();
 
     let offSetValue = screenCenter - redWalker.getPositionX();
     let mirrorValue = screenCenter + offSetValue;
