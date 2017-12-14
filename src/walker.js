@@ -1,18 +1,25 @@
 class Walker {
   constructor(p, color, size = 2) {
     this._p = p;
-    this.positionX = this._p.width / 2;
-    this.positionY = this._p.height / 2;
+    this.position = this._p.createVector(this._p.width / 2, this._p.height / 2)
     this.color = color;
     this.size = size;
     this._offset = 0;
+  }
+
+  getPositionX() {
+    return this.position.x;
+  }
+
+  getPositionY() {
+    return this.position.y;
   }
 
   show() {
     const p = this._p;
     p.noStroke();
     p.fill(this.color);
-    p.ellipse(this.positionX, this.positionY, this.size);
+    p.ellipse(this.position.x, this.position.y, this.size);
   }
 
   move() {
@@ -22,20 +29,20 @@ class Walker {
     const choice = Math.floor(p.random(10));
 
     if (choice <= 2.5) {
-      this.positionX = this.positionX + deviation;
+      this.position.x = this.position.x + deviation;
     } else if (choice <= 5) {
-      this.positionX = this.positionX - deviation;
+      this.position.x = this.position.x - deviation;
     } else if (choice <= 7.5) {
-      this.positionY = this.positionY + deviation;
+      this.position.y = this.position.y + deviation;
     } else {
-      this.positionY = this.positionY - deviation;
+      this.position.y = this.position.y - deviation;
     }
 
     const screenStart = 0;
     const screenWidthEnd = p.width;
     const screenHeightEnd = p.height;
-    this.positionX = p.constrain(this.positionX, screenStart, screenWidthEnd);
-    this.positionY = p.constrain(this.positionY, screenStart, screenHeightEnd);
+    this.positionX = p.constrain(this.position.x, screenStart, screenWidthEnd);
+    this.positionY = p.constrain(this.position.y, screenStart, screenHeightEnd);
     this._offset += 0.003;
   }
 }

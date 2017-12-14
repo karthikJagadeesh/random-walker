@@ -23,10 +23,10 @@ const app = p => {
   p.draw = _ => {
     redWalker.move();
 
-    let offSetValue = screenCenter - redWalker.positionX;
+    let offSetValue = screenCenter - redWalker.getPositionX();
     let mirrorValue = screenCenter + offSetValue;
-    blueWalker.positionX = mirrorValue;
-    blueWalker.positionY = redWalker.positionY;
+    blueWalker.position.x = mirrorValue;
+    blueWalker.position.y = redWalker.getPositionY();
 
     redWalker.show();
     blueWalker.show();
